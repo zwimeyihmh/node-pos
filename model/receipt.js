@@ -1,8 +1,9 @@
 var Utilities = require('./utilities.js');
+//var Cart = require('./cart.js');
 function Receipt(){
 
 }
-Receipt.prototype.printed = function(){
+Receipt.prototype.printed = function(cart){
   var utilities= new Utilities();
 //  var promotionPrice = new PriceDifference();
   return ('***<没钱赚商店>收据***\n' +
