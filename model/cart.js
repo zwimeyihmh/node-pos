@@ -1,9 +1,10 @@
+module.exports = Cart;
+
 var Utilities = require('./utilities.js');
-var CartItem = require('./cart\tem.js');
+var CartItem = require('./cart-item.js');
 var PromotedItem = require('./promoted-item.js');
-
-
-
+var PriceDifference = require('./price-difference.js');
+var Promotion = require('./promotion.js');
 function Cart() {
   this.cartItems = [];
   this.promotions = [];
@@ -38,6 +39,7 @@ Cart.prototype.getPromotions = function() {
   }
 
 };
+
 
 function loadPromotions() {
   return [
@@ -79,7 +81,7 @@ Cart.prototype.getItemsString = function() {
 
 
 Cart.prototype.getPromotionsString = function() {
-  this.getPromotions();
+  //this.getPromotions();
   var promotionsSting = '';
   var promotionItem = new PromotedItem();
   this.promotions.forEach(function(promotion) {
@@ -111,4 +113,4 @@ Cart.prototype.getAmount = function() {
   }
   return amount;
 };
-module.exports = Cart;
+//module.exports = Cart;
