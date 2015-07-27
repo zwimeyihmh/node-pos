@@ -2,6 +2,8 @@ module.exports = Discounter;
 
 var Cart = require('./cart.js');
 var fixtures = require('../fixtures.js');
+var PromotionsType = require('./promotion-type.js');
+
 function Discounter(cartItems) {
   this.promotions = [];
   this.cartItems = cartItems;
@@ -19,9 +21,10 @@ Discounter.prototype.getPromotions = function(cartItems) {
 };
 
 Discounter.prototype.promoteItems = function(item) {
-  var promotionsLoad = fixtures.loadPromotions();
+//  var promotionsLoad = fixtures.loadPromotions();
   var promotion;
-  var promotionsBarcode = promotionsLoad[0].barcodes;
+  var promotionsType = new PromotionsType();
+  var promotionsBarcode = promotionsType.findPrommotionType();
   promotionsBarcode.forEach(function(promotionBarcode) {
     if (item.item.barcode === promotionBarcode) {
       promotion = {
