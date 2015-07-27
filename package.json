@@ -1,0 +1,20 @@
+{
+  "name": "node-pos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zwimeyihmh/node-pos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zwimeyihmh/node-pos/issues"
+  },
+  "homepage": "https://github.com/zwimeyihmh/node-pos#readme"
+}
