@@ -5,27 +5,29 @@ var CartItem = require('./cart-item.js');
 var PromotedItem = require('./promoted-item.js');
 var PriceDifference = require('./price-difference.js');
 var Promotion = require('./promotion.js');
+var fixtures = require('../fixtures.js');
+
 function Cart() {
   this.cartItems = [];
   this.promotions = [];
 }
 
-Cart.prototype.addCartItem = function(item) {
-  var　 cartItem　 = 　this.findCartItem(item);
-  if (cartItem) {
-    cartItem.count++;
+Cart.prototype.addCartItem = function(cartItem) {
+  var　 existed　= Cart.findCartItem(cartItem,this.cartItems);
+  if (existed) {
+    existed.count += cartItem.count;
   } else {
-    this.cartItems.push(item);
+    this.cartItems.push(cartItem);
   }
 };
 
-Cart.prototype.findCartItem = function(cartItem) {
-  for (var i = 0; i < this.cartItems.length; i++) {
-    if (cartItem.item.barcode === this.cartItems[i].item.barcode) {
-      return this.cartItems[i];
+Cart.findCartItem = function(cartItem,cartItems) {
+  for (var i = 0; i < cartItems.length; i++) {
+    if (cartItem.item.barcode === cartItems[i].item.barcode) {
+      return cartItems[i];
     }
   }
-  return undefined;
+//  return undefined;
 };
 
 Cart.prototype.getPromotions = function() {
@@ -41,19 +43,11 @@ Cart.prototype.getPromotions = function() {
 };
 
 
-function loadPromotions() {
-  return [
-    new Promotion('BUY_TWO_GET_ONE_FREE', [
-      'ITEM000000',
-      'ITEM000001',
-      'ITEM000005'
-    ])
-  ];
-}
+
 
 
 Cart.prototype.promoteItems = function(item) {
-  var promotionsLoad = loadPromotions();
+  var promotionsLoad = fixtures.loadPromotions();
   var promotion;
   var promotionsBarcode = promotionsLoad[0].barcodes;
   promotionsBarcode.forEach(function(promotionBarcode) {
