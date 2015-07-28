@@ -1,4 +1,3 @@
-
 function Item(barcode, name, unit, price) {
   this.barcode = barcode;
   this.name = name;

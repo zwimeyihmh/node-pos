@@ -1,13 +1,11 @@
 module.exports = Discounter;
 
 var Cart = require('./cart.js');
-var fixtures = require('../fixtures.js');
 var PromotionsType = require('./promotion-type.js');
 
-function Discounter(cartItems) {
+function Discounter() {
   this.promotions = [];
-  this.cartItems = cartItems;
-}
+  }
 
 Discounter.prototype.getPromotions = function(cartItems) {
   var promotion;
@@ -21,7 +19,6 @@ Discounter.prototype.getPromotions = function(cartItems) {
 };
 
 Discounter.prototype.promoteItems = function(item) {
-//  var promotionsLoad = fixtures.loadPromotions();
   var promotion;
   var promotionsType = new PromotionsType();
   var promotionsBarcode = promotionsType.findPrommotionType();
@@ -35,7 +32,6 @@ Discounter.prototype.promoteItems = function(item) {
   });
   return promotion;
 };
-
 
 Discounter.prototype.getPromotedAmount = function(promotionItems) {
   var saved = 0;

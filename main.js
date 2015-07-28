@@ -11,4 +11,17 @@ function printReceipt(tags) {
   console.log(pos.print());
 }
 
+tags = [
+  'ITEM000001',
+  'ITEM000001',
+  'ITEM000001',
+  'ITEM000001',
+  'ITEM000001',
+  'ITEM000003-2',
+  'ITEM000005',
+  'ITEM000005',
+  'ITEM000005'
+];
+printReceipt(tags);
+
 exports.printReceipt = printReceipt;

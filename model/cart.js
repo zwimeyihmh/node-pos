@@ -1,18 +1,13 @@
 module.exports = Cart;
 
-var Utilities = require('./utilities.js');
-var CartItem = require('./cart-item.js');
-var PromotedItem = require('./promoted-item.js');
-var Discounter = require('./discounter.js');
-var Promotion = require('./promotion.js');
-var fixtures = require('../fixtures.js');
+var ReceiptItem = require('./receipt-item.js');
 
 function Cart() {
   this.cartItems = [];
 }
 
 Cart.prototype.addCartItem = function(cartItem) {
-  var　 existed　= Cart.findCartItem(cartItem,this.cartItems);
+  var existed　= Cart.findCartItem(cartItem,this.cartItems);
   if (existed) {
     existed.count += cartItem.count;
   } else {
@@ -30,9 +25,9 @@ Cart.findCartItem = function(cartItem,cartItems) {
 
 Cart.prototype.getAmount = function() {
   var amount = 0;
-  var cartItem = new CartItem();
+  var receiptItem = new ReceiptItem();
   for (var i = 0; i < this.cartItems.length; i++) {
-    amount += cartItem.getSubTotal(this.cartItems[i]);
+    amount += receiptItem.getSubTotal(this.cartItems[i]);
   }
   return amount;
 };

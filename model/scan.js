@@ -19,7 +19,6 @@ Scan.prototype.scan = function(tag) {
     item: cartitem.findItem(tag),
     count: count
   });
-
 };
 
 module.exports = Scan;
