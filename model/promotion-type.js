@@ -1,12 +1,13 @@
 var fixtures = require('../fixtures.js');
 
-function PromotionsType(){
+function PromotionsType(promotionType){
   this.promotionsType = fixtures.loadPromotions();
+  this.promotionType = promotionType;
 }
 
 PromotionsType.prototype.findPrommotionType = function(){
   for(var i = 0; i < this.promotionsType.length;i++){
-    if(this.promotionsType[i].type === "BUY_TWO_GET_ONE_FREE"){
+    if(this.promotionsType[i].type === this.promotionType){
       return this.promotionsType[i].barcodes;
     }
   }
