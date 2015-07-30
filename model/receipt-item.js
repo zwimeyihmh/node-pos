@@ -19,7 +19,7 @@ ReceiptItem.prototype.getSubTotal = function(item) {
   var discounter = new Discounter();
   var subtotal = this.subTotal(item.item.price, item.count);
   if (discounter.getSubPrice(item)) {
-    subtotal = discounter.getSubPrice(item);
+    subtotal = subtotal - discounter.getSubPrice(item);
   }
   return subtotal;
 };

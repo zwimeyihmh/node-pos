@@ -20,7 +20,7 @@ Discounter.prototype.getPromotions = function(cartItems) {
 
 Discounter.prototype.promoteItems = function(item) {
   var promotion;
-  var promotionsType = new PromotionsType();
+  var promotionsType = new PromotionsType("BUY_TWO_GET_ONE_FREE");
   var promotionsBarcode = promotionsType.findPrommotionType();
   promotionsBarcode.forEach(function(promotionBarcode) {
     if (item.item.barcode === promotionBarcode) {
@@ -45,7 +45,7 @@ Discounter.prototype.getSubPrice = function(cartItem) {
   var cart = new Cart();
   var promotion = this.promoteItems(cartItem);
   if (promotion) {
-    return (cartItem.count - promotion.count) * cartItem.item.price;
+    return (promotion.count) * promotion.item.price;
   }
   return 0;
 };
