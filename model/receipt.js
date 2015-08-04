@@ -2,8 +2,8 @@ var Utilities = require('./utilities.js');
 var Discounter = require('./discounter.js');
 var ReceiptItem = require('./receipt-item.js');
 
-function Receipt() {
-  this.receiptItem = new ReceiptItem();
+function Receipt(receiptItem) {
+  this.receiptItem = receiptItem||new ReceiptItem();
 }
 
 Receipt.prototype.printed = function(cart) {
@@ -19,7 +19,7 @@ Receipt.prototype.printed = function(cart) {
     this.getPromotionsString(discounter.promotions) +
     '----------------------\n' +
     '总计：' + utilities.formatPrice(cart.getAmount()) + '(元)\n' +
-    '节省：' + utilities.formatPrice(discounter.getPromotedAmount(discounter.promotions)) + '(元)\n' +
+    '节省：' + utilities.formatPrice(discounter.getPromotedAmount()) + '(元)\n' +
     '**********************');
 };
 
